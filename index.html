@@ -13,9 +13,13 @@
     font-family:Segoe UI, Arial, sans-serif;
 }
 
+html, body{
+    width:100%;
+    height:100%;
+}
+
 body{
     background:radial-gradient(circle at top,#2a0000,#000 75%);
-    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -24,7 +28,8 @@ body{
 
 /* APP */
 .app{
-    width:390px;
+    width:100%;
+    max-width:390px;
     background:rgba(255,0,0,0.07);
     backdrop-filter:blur(22px);
     border-radius:24px;
@@ -47,7 +52,7 @@ body{
     opacity:.7;
 }
 
-/* ABAS PRINCIPAIS */
+/* ABAS */
 .tabs{
     display:flex;
     gap:8px;
@@ -184,16 +189,13 @@ body{
         <span>Painel Gamer • UI Conceito</span>
     </div>
 
-    <!-- ABAS PRINCIPAIS -->
     <div class="tabs">
         <div class="tab active" onclick="openTab(0)">VISUAL</div>
         <div class="tab" onclick="openTab(1)">TREINO</div>
         <div class="tab" onclick="openTab(2)">PERF</div>
     </div>
 
-    <!-- VISUAL -->
     <div class="content active">
-
         <h3>Visual / HUD</h3>
 
         <div class="subtabs">
@@ -222,13 +224,10 @@ body{
                 <div class="toggle" onclick="toggle(this)"></div>
             </div>
         </div>
-
     </div>
 
-    <!-- TREINO -->
     <div class="content">
         <h3>Treinamento</h3>
-
         <div class="option">
             <span>Precisão Simulada</span>
             <div class="toggle on" onclick="toggle(this)"></div>
@@ -239,10 +238,8 @@ body{
         </div>
     </div>
 
-    <!-- PERF -->
     <div class="content">
         <h3>Performance</h3>
-
         <div class="option">
             <span>FPS Visual</span>
             <div class="toggle on" onclick="toggle(this)"></div>
@@ -272,7 +269,7 @@ function openTab(i){
 }
 
 function openSub(el,i){
-    const box=el.parentElement.parentElement;
+    const box=el.closest(".content");
     box.querySelectorAll(".subtab").forEach(s=>s.classList.remove("active"));
     box.querySelectorAll(".subcontent").forEach(c=>c.classList.remove("active"));
     el.classList.add("active");
